@@ -4,15 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AirXperience — The digital twin and permanent memory of your building</title>
+<meta name="description" content="AirXperience runs short-term, long-term and commercial property operations in one platform — mapping every unit, asset and system, and recording every repair, task and check for good. Nothing in your head; all in the system.">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<meta name="description" content="AirXperience is the digital twin and permanent record of a building — every unit, asset and system mapped, every repair, change and event recorded for good. So the building remembers, even when your team turns over.">
+<script>document.documentElement.classList.add('js')</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --forest:#20271A; --forest-2:#2F3A23; --forest-line:#3A4530;
+    --forest:#20271A; --forest-2:#2F3A23; --forest-card:#28321C; --forest-line:#3A4530;
     --brass:#C9A24B; --brass-deep:#A07E2F;
     --cream:#F3F0E6; --paper:#F7F4EC; --paper-2:#EFEBDF;
     --ink:#20271A; --muted:#6E6A5C; --faint:#8A8472; --stone:#D8D2C2;
@@ -21,14 +22,14 @@
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
   body{font-family:var(--sans);background:var(--paper);color:var(--ink);line-height:1.6;font-size:17px;-webkit-font-smoothing:antialiased}
   a{color:inherit;text-decoration:none}
   .wrap{max-width:var(--wrap);margin:0 auto;padding:0 28px}
-  .eyebrow{font-family:var(--mono);font-size:13px;letter-spacing:.06em;color:var(--brass-deep)}
-  h1,h2,h3{font-family:var(--display);font-weight:700;letter-spacing:-.015em;line-height:1.06;color:var(--ink)}
-  h1{font-size:clamp(40px,6vw,68px)}
-  h2{font-size:clamp(30px,4.4vw,50px)}
+  .eyebrow{font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--brass-deep)}
+  h1,h2,h3{font-family:var(--display);font-weight:700;letter-spacing:-.015em;line-height:1.05;color:var(--ink)}
+  h1{font-size:clamp(40px,6vw,66px)}
+  h2{font-size:clamp(29px,4.2vw,46px)}
   .lead{font-size:clamp(18px,1.6vw,21px);color:#4c4a3d;line-height:1.5}
   .btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--sans);font-weight:500;font-size:16px;padding:14px 24px;border-radius:11px;cursor:pointer;border:1px solid transparent;transition:transform .12s,background .15s}
   .btn-primary{background:var(--brass);color:#3D2E0E}
@@ -37,66 +38,97 @@
   .btn-ghost:hover{background:var(--paper-2);border-color:var(--muted)}
   :focus-visible{outline:2.5px solid var(--brass);outline-offset:3px;border-radius:4px}
 
-  header.nav{position:sticky;top:0;z-index:50;background:rgba(247,244,236,.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--stone)}
+  .js .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+  .js .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.js .reveal{opacity:1;transform:none}}
+
+  header.nav{position:sticky;top:0;z-index:50;background:rgba(247,244,236,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--stone)}
   .nav-in{display:flex;align-items:center;justify-content:space-between;height:70px}
   .brand{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;font-size:21px;letter-spacing:-.02em}
   .brand svg{width:32px;height:25px;display:block;flex:none}
   .nav-right{display:flex;align-items:center;gap:24px}
   .nav-right .lk{font-size:15px;color:#4c4a3d}
   .nav-right .lk:hover{color:var(--ink)}
-  @media (max-width:720px){.nav-right .lk{display:none}}
+  @media (max-width:760px){.nav-right .lk{display:none}}
   @media (max-width:480px){.brand{font-size:18px}.btn{padding:12px 18px;font-size:15px}}
 
+  section{padding:96px 0}
+  .dark{background:var(--forest);color:var(--cream)}
+  .dark h2,.dark h3{color:var(--cream)}
+  .dark .eyebrow{color:var(--brass)}
+  .center{text-align:center;max-width:48rem;margin:0 auto}
+  .center .eyebrow{display:block;margin-bottom:16px}
+  .sec-head{margin-bottom:56px}
+  .sec-head p{margin-top:16px}
+
   /* hero */
-  .hero{padding:74px 0 40px}
+  .hero{padding:72px 0 44px}
   .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center}
-  .hero .eyebrow{margin-bottom:22px}
-  .hero h1{margin-bottom:24px}
+  .hero .eyebrow{margin-bottom:22px;display:block}
+  .hero h1{margin-bottom:22px}
   .hero h1 em{font-style:normal;color:var(--brass-deep)}
-  .hero .lead{max-width:31em;margin-bottom:34px}
+  .hero .lead{max-width:28em;margin-bottom:32px}
   .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:26px}
   .trust{font-family:var(--mono);font-size:13px;color:var(--muted);line-height:1.5}
   .trust b{color:var(--ink);font-weight:500}
   .hero-art{width:100%;height:auto;display:block}
 
-  section{padding:104px 0}
-  .center{text-align:center;max-width:46rem;margin:0 auto}
-  .center .eyebrow{display:block;margin-bottom:18px}
-  .center h2{margin-bottom:0}
+  /* problem */
+  .prob-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:54px;align-items:center}
+  .prob .eyebrow{display:block;margin-bottom:20px}
+  .prob h2{font-size:clamp(30px,4.2vw,46px);max-width:13ch;margin-bottom:22px}
+  .prob p{color:#cdcdbd;font-size:18px;line-height:1.6;max-width:34ch}
+  .prob-art{width:100%;height:auto;display:block;order:-1}
 
-  /* story — forest band */
-  .band{background:var(--forest);color:var(--cream)}
-  .band h2{color:var(--cream)}
-  .band .eyebrow{color:var(--brass)}
-  .story-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
-  .story h2{font-size:clamp(28px,3.6vw,44px);margin-bottom:22px;max-width:15ch}
-  .story p{color:#cdcdbd;font-size:17.5px;line-height:1.62;max-width:36ch}
-  .story p + p{margin-top:18px}
-  .story p b{color:var(--brass);font-weight:500}
-  .compound{width:100%;height:auto;display:block}
+  /* generic cards grid */
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .card{padding:30px 26px;background:#fff;border:1px solid var(--stone);border-radius:16px}
+  .card .ico{width:44px;height:44px;display:block;margin-bottom:20px}
+  .card h3{font-family:var(--display);font-weight:600;font-size:20px;margin-bottom:9px}
+  .card p{font-size:15px;color:#54513f;line-height:1.55}
+  .card .tag{font-family:var(--mono);font-size:11px;color:var(--brass-deep);letter-spacing:.06em;display:block;margin-bottom:12px}
+  .dark .card{background:var(--forest-card);border-color:var(--forest-line)}
+  .dark .card h3{color:var(--cream)}
+  .dark .card p{color:#c2c6b4}
 
-  /* mapped */
-  .mapped .center{margin-bottom:62px}
-  .facets{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:980px;margin:0 auto}
-  .facet{padding:30px 26px;border-top:2px solid var(--brass)}
-  .facet .fk{font-family:var(--mono);font-size:12px;color:var(--brass-deep);display:block;margin-bottom:14px}
-  .facet h3{font-family:var(--display);font-weight:600;font-size:21px;margin-bottom:10px}
-  .facet p{font-size:15.5px;color:#54513f;line-height:1.55}
-  .pms-note{text-align:center;font-family:var(--mono);font-size:13px;color:var(--muted);margin-top:54px}
+  /* how it works */
+  .how h2 .sep{color:var(--brass-deep)}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .step{padding:32px 28px;background:#fff;border:1px solid var(--stone);border-radius:16px}
+  .step .ico{width:46px;height:46px;display:block;margin-bottom:22px}
+  .step .sn{font-family:var(--mono);font-size:12px;color:var(--brass-deep);letter-spacing:.06em}
+  .step h3{font-family:var(--display);font-weight:600;font-size:21px;margin:8px 0 10px}
+  .step p{font-size:15.5px;color:#54513f;line-height:1.55}
+  .pms-note{text-align:center;font-family:var(--mono);font-size:13px;color:var(--muted);margin-top:48px}
+
+  /* operations */
+  .ops-feature{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;background:var(--forest-card);border:1px solid var(--forest-line);border-radius:20px;padding:44px;margin-bottom:24px}
+  .ops-feature .tag{font-family:var(--mono);font-size:12px;color:var(--brass);letter-spacing:.06em;display:flex;align-items:center;gap:8px;margin-bottom:14px}
+  .ops-feature h3{font-family:var(--display);font-weight:700;font-size:clamp(24px,2.6vw,32px);color:var(--cream);margin-bottom:14px;line-height:1.1}
+  .ops-feature p{color:#c2c6b4;font-size:16.5px;line-height:1.55}
+  .ops-feature .sched{width:100%;height:auto;display:block}
+  .ops-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+
+  /* compounds */
+  .comp .center{max-width:40rem;margin-bottom:44px}
+  .comp h2{max-width:16ch;margin:0 auto}
+  .comp p{color:#cdcdbd;font-size:18px;margin-top:16px}
+  .comp .chart{max-width:740px;margin:0 auto;width:100%;height:auto;display:block}
 
   /* proof */
   .proof{background:var(--paper-2);border-top:1px solid var(--stone);border-bottom:1px solid var(--stone)}
   .proof .center{max-width:42rem}
   .proof h2{font-size:clamp(26px,3.4vw,40px);margin-bottom:18px}
+  .proof .eyebrow{display:block;margin-bottom:18px}
   .proof .lead{margin-bottom:0}
-  .stats{display:flex;gap:60px;justify-content:center;flex-wrap:wrap;margin-top:50px}
+  .stats{display:flex;gap:56px;justify-content:center;flex-wrap:wrap;margin-top:48px}
   .stat .num{font-family:var(--display);font-weight:700;font-size:50px;line-height:1;letter-spacing:-.02em}
-  .stat .num span{color:var(--brass)}
+  .stat .num span{color:var(--brass-deep)}
   .stat .sl{font-family:var(--mono);font-size:13px;color:var(--muted);margin-top:9px}
 
   /* cta */
-  .cta{background:var(--forest);color:var(--cream);text-align:center}
-  .cta h2{color:var(--cream);max-width:16ch;margin:0 auto 16px}
+  .cta{text-align:center}
+  .cta h2{max-width:16ch;margin:0 auto 16px}
   .cta .lead{color:#cdcdbd;max-width:42ch;margin:0 auto 30px}
   .cta .note{font-family:var(--mono);font-size:12px;color:#8b9178;margin-top:16px}
 
@@ -107,14 +139,15 @@
   .foot .fr a{color:var(--brass-deep)}
   .foot .fr a:hover{color:var(--ink)}
 
-  @media (max-width:820px){
-    .hero-grid,.story-grid{grid-template-columns:1fr;gap:40px}
-    .hero{padding:46px 0 20px}
-    .hero-art{max-width:420px;margin:0 auto}
-    .facets{grid-template-columns:1fr;max-width:460px}
-    .facet{border-top:none;border-left:2px solid var(--brass);padding:6px 0 6px 22px}
-    section{padding:72px 0}
-    .stats{gap:36px}
+  @media (max-width:860px){
+    .hero-grid,.prob-grid,.ops-feature{grid-template-columns:1fr;gap:36px}
+    .ops-feature{padding:30px}
+    .hero{padding:46px 0 22px}
+    .hero-art,.prob-art{max-width:420px;margin:0 auto}
+    .prob-art{order:0}
+    .grid3,.steps,.ops-grid{grid-template-columns:1fr;max-width:440px;margin:0 auto}
+    section{padding:68px 0}
+    .stats{gap:34px}
     .foot{flex-direction:column}
     .foot .fr{text-align:left}
   }
@@ -126,15 +159,14 @@
   <div class="wrap nav-in">
     <a class="brand" href="#top" aria-label="AirXperience home">
       <svg viewBox="76 116 360 280" aria-hidden="true"><g fill="none" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M96,376 L169,136 L241,376" stroke="#2F3A23" stroke-width="30"/>
-        <path d="M125,281 L212,281" stroke="#2F3A23" stroke-width="30"/>
-        <path d="M285,136 L416,376" stroke="#2F3A23" stroke-width="30"/>
-        <path d="M416,136 L285,376" stroke="#2F3A23" stroke-width="30"/>
+        <path d="M96,376 L169,136 L241,376" stroke="#2F3A23" stroke-width="30"/><path d="M125,281 L212,281" stroke="#2F3A23" stroke-width="30"/>
+        <path d="M285,136 L416,376" stroke="#2F3A23" stroke-width="30"/><path d="M416,136 L285,376" stroke="#2F3A23" stroke-width="30"/>
         <path d="M205,274 Q285,361 350,252" stroke="#C9A24B" stroke-width="22"/></g></svg>
       AirXperience
     </a>
     <div class="nav-right">
-      <a class="lk" href="#story">The idea</a>
+      <a class="lk" href="#how">How it works</a>
+      <a class="lk" href="#platform">Platform</a>
       <a class="lk" href="#proof">Proof</a>
       <a href="https://tally.so/r/pb5ARE" target="_blank" rel="noopener" class="btn btn-primary">Get early access</a>
     </div>
@@ -146,116 +178,233 @@
   <!-- HERO -->
   <section class="hero">
     <div class="wrap hero-grid">
-      <div>
+      <div class="reveal">
         <span class="eyebrow">Property intelligence</span>
         <h1>The digital twin and <em>permanent memory</em> of your building.</h1>
-        <p class="lead">Right now your buildings live in people's heads, group chats and a drawer of receipts. AirXperience maps every unit, asset and system — and records every repair, inspection and change for good. So the building remembers, even when your team turns over.</p>
+        <p class="lead">Run every door — short-term, long-term and commercial — in one platform. Every asset mapped, every task, check and repair recorded for good. Nothing in your head; all in the system.</p>
         <div class="hero-actions">
           <a href="https://tally.so/r/pb5ARE" target="_blank" rel="noopener" class="btn btn-primary">Get early access</a>
-          <a href="#story" class="btn btn-ghost">See the idea</a>
+          <a href="#how" class="btn btn-ghost">How it works</a>
         </div>
-        <p class="trust">A live system of record running a <b>52-unit portfolio</b> — short-term, long-term and commercial, under one roof.</p>
+        <p class="trust">A live system of record running a <b>52-unit portfolio</b> — short-term, long-term and commercial.</p>
       </div>
-
-      <svg class="hero-art" viewBox="0 0 420 510" role="img" aria-label="A building shown with its digital twin and a timeline of its recorded history">
+      <svg class="hero-art reveal" viewBox="0 0 420 510" role="img" aria-label="A building shown with its digital twin and a timeline of its recorded history">
         <line x1="70" y1="108" x2="70" y2="424" stroke="#D8D2C2" stroke-width="1.5"/>
         <rect x="160" y="70" width="150" height="340" rx="12" fill="none" stroke="#C9A24B" stroke-width="1.5"/>
-        <circle cx="160" cy="70" r="3" fill="#C9A24B"/>
-        <circle cx="310" cy="70" r="3" fill="#C9A24B"/>
+        <circle cx="160" cy="70" r="3" fill="#C9A24B"/><circle cx="310" cy="70" r="3" fill="#C9A24B"/>
         <rect x="138" y="92" width="150" height="340" rx="12" fill="#2F3A23"/>
         <g>
-          <rect x="156" y="112" width="32" height="20" rx="3" fill="#F3F0E6" opacity=".15"/>
-          <rect x="203" y="112" width="32" height="20" rx="3" fill="#F3F0E6" opacity=".15"/>
-          <rect x="250" y="112" width="32" height="20" rx="3" fill="#F3F0E6" opacity=".15"/>
-          <rect x="156" y="160" width="32" height="20" rx="3" fill="#F3F0E6" opacity=".15"/>
-          <rect x="203" y="160" width="32" height="20" rx="3" fill="#C9A24B" opacity=".92"/>
-          <rect x="250" y="160" width="32" height="20" rx="3" fill="#F3F0E6" opacity=".15"/>
-          <rect x="156" y="208" width="32" height="20" rx="3" fill="#F3F0E6" opacity=".15"/>
-          <rect x="203" y="208" width="32" height="20" rx="3" fill="#F3F0E6" opacity=".15"/>
-          <rect x="250" y="208" width="32" height="20" rx="3" fill="#F3F0E6" opacity=".15"/>
-          <rect x="156" y="256" width="32" height="20" rx="3" fill="#C9A24B" opacity=".92"/>
-          <rect x="203" y="256" width="32" height="20" rx="3" fill="#F3F0E6" opacity=".15"/>
-          <rect x="250" y="256" width="32" height="20" rx="3" fill="#F3F0E6" opacity=".15"/>
-          <rect x="156" y="304" width="32" height="20" rx="3" fill="#F3F0E6" opacity=".15"/>
-          <rect x="203" y="304" width="32" height="20" rx="3" fill="#F3F0E6" opacity=".15"/>
-          <rect x="250" y="304" width="32" height="20" rx="3" fill="#C9A24B" opacity=".92"/>
-          <rect x="156" y="352" width="32" height="20" rx="3" fill="#F3F0E6" opacity=".15"/>
-          <rect x="203" y="352" width="32" height="20" rx="3" fill="#F3F0E6" opacity=".15"/>
-          <rect x="250" y="352" width="32" height="20" rx="3" fill="#F3F0E6" opacity=".15"/>
+          <rect x="156" y="112" width="32" height="20" rx="3" fill="#F3F0E6" opacity=".15"/><rect x="203" y="112" width="32" height="20" rx="3" fill="#F3F0E6" opacity=".15"/><rect x="250" y="112" width="32" height="20" rx="3" fill="#F3F0E6" opacity=".15"/>
+          <rect x="156" y="160" width="32" height="20" rx="3" fill="#F3F0E6" opacity=".15"/><rect x="203" y="160" width="32" height="20" rx="3" fill="#C9A24B" opacity=".92"/><rect x="250" y="160" width="32" height="20" rx="3" fill="#F3F0E6" opacity=".15"/>
+          <rect x="156" y="208" width="32" height="20" rx="3" fill="#F3F0E6" opacity=".15"/><rect x="203" y="208" width="32" height="20" rx="3" fill="#F3F0E6" opacity=".15"/><rect x="250" y="208" width="32" height="20" rx="3" fill="#F3F0E6" opacity=".15"/>
+          <rect x="156" y="256" width="32" height="20" rx="3" fill="#C9A24B" opacity=".92"/><rect x="203" y="256" width="32" height="20" rx="3" fill="#F3F0E6" opacity=".15"/><rect x="250" y="256" width="32" height="20" rx="3" fill="#F3F0E6" opacity=".15"/>
+          <rect x="156" y="304" width="32" height="20" rx="3" fill="#F3F0E6" opacity=".15"/><rect x="203" y="304" width="32" height="20" rx="3" fill="#F3F0E6" opacity=".15"/><rect x="250" y="304" width="32" height="20" rx="3" fill="#C9A24B" opacity=".92"/>
+          <rect x="156" y="352" width="32" height="20" rx="3" fill="#F3F0E6" opacity=".15"/><rect x="203" y="352" width="32" height="20" rx="3" fill="#F3F0E6" opacity=".15"/><rect x="250" y="352" width="32" height="20" rx="3" fill="#F3F0E6" opacity=".15"/>
         </g>
         <line x1="118" y1="446" x2="330" y2="446" stroke="#D8D2C2" stroke-width="1.5"/>
-        <circle cx="70" cy="126" r="4.5" fill="#C9A24B"/>
-        <text x="56" y="130" text-anchor="end" font-family="DM Mono, monospace" font-size="11" fill="#8A8472">2019</text>
-        <circle cx="70" cy="216" r="4.5" fill="#C9A24B"/>
-        <text x="56" y="220" text-anchor="end" font-family="DM Mono, monospace" font-size="11" fill="#8A8472">2022</text>
-        <circle cx="70" cy="306" r="4.5" fill="#C9A24B"/>
-        <text x="56" y="310" text-anchor="end" font-family="DM Mono, monospace" font-size="11" fill="#8A8472">2024</text>
-        <circle cx="70" cy="404" r="4.5" fill="#C9A24B"/>
-        <text x="56" y="408" text-anchor="end" font-family="DM Mono, monospace" font-size="11" fill="#8A8472">2026</text>
+        <circle cx="70" cy="126" r="4.5" fill="#C9A24B"/><text x="56" y="130" text-anchor="end" font-family="DM Mono, monospace" font-size="11" fill="#8A8472">2019</text>
+        <circle cx="70" cy="216" r="4.5" fill="#C9A24B"/><text x="56" y="220" text-anchor="end" font-family="DM Mono, monospace" font-size="11" fill="#8A8472">2022</text>
+        <circle cx="70" cy="306" r="4.5" fill="#C9A24B"/><text x="56" y="310" text-anchor="end" font-family="DM Mono, monospace" font-size="11" fill="#8A8472">2024</text>
+        <circle cx="70" cy="404" r="4.5" fill="#C9A24B"/><text x="56" y="408" text-anchor="end" font-family="DM Mono, monospace" font-size="11" fill="#8A8472">2026</text>
       </svg>
     </div>
   </section>
 
-  <!-- STORY -->
-  <section class="band story" id="story">
-    <div class="wrap story-grid">
-      <div>
-        <span class="eyebrow">The idea</span>
-        <h2>Every building has a story. Most of it is being lost.</h2>
-        <p>Which unit's heating is temperamental. The plumber who actually knows the risers. What broke last winter, what it cost, and how it finally got fixed. Today that lives in people's heads, group chats and a drawer of receipts — and it walks out the door the day someone leaves.</p>
-        <p>AirXperience turns it into the building's <b>institutional memory</b> — written down the moment it happens, kept for good, and worth more every year you run it. Turnover stops being a reset.</p>
+  <!-- PROBLEM -->
+  <section class="dark prob">
+    <div class="wrap prob-grid">
+      <svg class="prob-art reveal" viewBox="0 0 440 300" role="img" aria-label="Knowledge drifting away from a building and fading">
+        <rect x="40" y="74" width="150" height="196" rx="10" fill="none" stroke="#F3F0E6" stroke-width="1.5" opacity=".32"/>
+        <rect x="60" y="94"  width="34" height="20" rx="3" fill="#F3F0E6" opacity=".1"/><rect x="108" y="94" width="34" height="20" rx="3" fill="#F3F0E6" opacity=".1"/>
+        <rect x="60" y="134" width="34" height="20" rx="3" fill="#C9A24B" opacity=".55"/><rect x="108" y="134" width="34" height="20" rx="3" fill="#F3F0E6" opacity=".1"/>
+        <rect x="60" y="174" width="34" height="20" rx="3" fill="#F3F0E6" opacity=".1"/><rect x="108" y="174" width="34" height="20" rx="3" fill="#C9A24B" opacity=".45"/>
+        <rect x="60" y="214" width="34" height="20" rx="3" fill="#F3F0E6" opacity=".1"/><rect x="108" y="214" width="34" height="20" rx="3" fill="#F3F0E6" opacity=".1"/>
+        <path d="M196,120 C250,104 300,128 350,96 S410,78 416,70" fill="none" stroke="#C9A24B" stroke-width="1.4" stroke-dasharray="3 7" opacity=".5"/>
+        <circle cx="206" cy="118" r="6" fill="#C9A24B" opacity=".9"/><circle cx="262" cy="106" r="5" fill="#C9A24B" opacity=".7"/><circle cx="312" cy="116" r="4" fill="#C9A24B" opacity=".5"/><circle cx="360" cy="94" r="3.2" fill="#C9A24B" opacity=".34"/><circle cx="400" cy="80" r="2.4" fill="#C9A24B" opacity=".2"/><circle cx="426" cy="70" r="1.7" fill="#C9A24B" opacity=".12"/>
+      </svg>
+      <div class="reveal">
+        <span class="eyebrow">The problem</span>
+        <h2>When your team turns over, the building forgets.</h2>
+        <p>The knowledge that keeps a building running lives in people's heads, group chats and a drawer of receipts. The day someone leaves, it walks out with them.</p>
       </div>
-      <svg class="compound" viewBox="0 0 420 230" role="img" aria-label="The recorded value of a building grows every year it runs on AirXperience">
-        <line x1="40" y1="186" x2="392" y2="186" stroke="#3A4530" stroke-width="1.5"/>
-        <rect x="48"  y="150" width="34" height="36"  rx="4" fill="#C9A24B" opacity=".34"/>
-        <rect x="96"  y="132" width="34" height="54"  rx="4" fill="#C9A24B" opacity=".44"/>
-        <rect x="144" y="110" width="34" height="76"  rx="4" fill="#C9A24B" opacity=".56"/>
-        <rect x="192" y="86"  width="34" height="100" rx="4" fill="#C9A24B" opacity=".68"/>
-        <rect x="240" y="64"  width="34" height="122" rx="4" fill="#C9A24B" opacity=".8"/>
-        <rect x="288" y="44"  width="34" height="142" rx="4" fill="#C9A24B" opacity=".9"/>
-        <rect x="336" y="26"  width="34" height="160" rx="4" fill="#C9A24B"/>
-        <text x="65"  y="206" text-anchor="middle" font-family="DM Mono, monospace" font-size="11" fill="#8b9178">'20</text>
-        <text x="161" y="206" text-anchor="middle" font-family="DM Mono, monospace" font-size="11" fill="#8b9178">'22</text>
-        <text x="257" y="206" text-anchor="middle" font-family="DM Mono, monospace" font-size="11" fill="#8b9178">'24</text>
-        <text x="353" y="206" text-anchor="middle" font-family="DM Mono, monospace" font-size="11" fill="#8b9178">'26</text>
-      </svg>
     </div>
   </section>
 
-  <!-- MAPPED -->
-  <section class="mapped">
+  <!-- EVERY DOOR -->
+  <section class="doors">
     <div class="wrap">
-      <div class="center">
-        <span class="eyebrow">What AX holds</span>
-        <h2>Everything in the building — mapped, recorded, remembered.</h2>
+      <div class="center sec-head reveal">
+        <span class="eyebrow">One platform</span>
+        <h2>Every door you manage — in one place.</h2>
+        <p class="lead">Most tools handle short-term and stop there. AX runs all three under one roof, so nothing lives in a separate spreadsheet.</p>
       </div>
-      <div class="facets">
-        <div class="facet">
-          <span class="fk">/ mapped</span>
-          <h3>The twin</h3>
-          <p>Every unit, asset and system modelled as a living picture of the building — what's there, where it is, and the shape it's in. Not a folder someone forgot to update.</p>
+      <div class="grid3">
+        <div class="card reveal">
+          <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="#A07E2F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="13" width="30" height="27" rx="3"/><line x1="9" y1="21" x2="39" y2="21"/><line x1="16" y1="9" x2="16" y2="16"/><line x1="32" y1="9" x2="32" y2="16"/><circle cx="24" cy="31" r="2" fill="#A07E2F" stroke="none"/></svg>
+          <span class="tag">Short-term</span>
+          <h3>Synced with your PMS</h3>
+          <p>Guesty, Hostaway and your channels feed in directly. Bookings, turnovers and the gaps between them, live.</p>
         </div>
-        <div class="facet">
-          <span class="fk">/ recorded</span>
+        <div class="card reveal">
+          <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="#A07E2F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="12" width="32" height="24" rx="3"/><circle cx="18" cy="22" r="3.5"/><path d="M12.5,30 c0,-3.2 2.6,-5 5.5,-5 s5.5,1.8 5.5,5"/><line x1="28" y1="20" x2="35" y2="20"/><line x1="28" y1="26" x2="35" y2="26"/></svg>
+          <span class="tag">Long-term</span>
+          <h3>Tenant contact cards</h3>
+          <p>People, leases and history attached to the unit — so the whole relationship lives in one record, not your phone.</p>
+        </div>
+        <div class="card reveal">
+          <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="#A07E2F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="12" y="10" width="24" height="30" rx="1.5"/><line x1="10" y1="40" x2="38" y2="40"/><rect x="17" y="16" width="5" height="5"/><rect x="26" y="16" width="5" height="5"/><rect x="20" y="29" width="8" height="11"/></svg>
+          <span class="tag">Commercial</span>
+          <h3>Leases &amp; assets together</h3>
+          <p>Commercial units with their own assets and lease terms, tracked in the same system as everything else.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how" id="how" style="background:var(--paper-2)">
+    <div class="wrap">
+      <div class="center sec-head reveal">
+        <span class="eyebrow">How it works</span>
+        <h2>Map it. <span class="sep">Record it.</span> Recall it.</h2>
+      </div>
+      <div class="steps">
+        <div class="step reveal">
+          <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="#A07E2F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="13" y="7" width="22" height="34" rx="2.5"/><line x1="13" y1="19" x2="35" y2="19"/><line x1="13" y1="30" x2="35" y2="30"/><line x1="24" y1="7" x2="24" y2="41"/><rect x="17.5" y="11.5" width="3" height="3" rx=".6" fill="#A07E2F" stroke="none"/><rect x="27.5" y="22.5" width="3" height="3" rx=".6" fill="#A07E2F" stroke="none"/><rect x="17.5" y="33.5" width="3" height="3" rx=".6" fill="#A07E2F" stroke="none"/></svg>
+          <span class="sn">01 / Map</span>
+          <h3>The building, structured</h3>
+          <p>Property → unit and common areas → assets → care plans. A living model of what's there, where it is, and the shape it's in.</p>
+        </div>
+        <div class="step reveal">
+          <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="#A07E2F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="11" y="7" width="26" height="34" rx="2.5"/><line x1="17" y1="16" x2="31" y2="16"/><line x1="17" y1="23" x2="31" y2="23"/><line x1="17" y1="30" x2="26" y2="30"/><circle cx="32" cy="32" r="6.5" fill="#fff"/><path d="M29.2,32 l2,2 l3.6,-3.8"/></svg>
+          <span class="sn">02 / Record</span>
+          <h3>Everything that happens</h3>
+          <p>Every turnover, repair, task and check logged the moment it happens — who, what, when, what it cost.</p>
+        </div>
+        <div class="step reveal">
+          <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="#A07E2F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="21" cy="21" r="12"/><line x1="30" y1="30" x2="40" y2="40"/><line x1="16" y1="19" x2="26" y2="19"/><line x1="16" y1="24" x2="23" y2="24"/></svg>
+          <span class="sn">03 / Recall</span>
+          <h3>Answers in seconds</h3>
+          <p>Ask what broke, when it was serviced, what's still under warranty — long after the people who knew have moved on.</p>
+        </div>
+      </div>
+      <p class="pms-note reveal">Works alongside the PMS you already run — Guesty, Hostaway, your channels.</p>
+    </div>
+  </section>
+
+  <!-- OPERATIONS / PLATFORM -->
+  <section class="dark ops" id="platform">
+    <div class="wrap">
+      <div class="center sec-head reveal">
+        <span class="eyebrow">The platform</span>
+        <h2>The whole operation, in one system.</h2>
+        <p class="lead" style="color:#cdcdbd">Nothing in your head. Every job, check and record where the team can see it.</p>
+      </div>
+
+      <div class="ops-feature reveal">
+        <div>
+          <div class="tag">★ &nbsp;Smart scheduling</div>
+          <h3>Schedule against real availability.</h3>
+          <p>Stop opening your PMS calendar to hunt for a free window. AX shows the actual gaps between guests — pick one, and the clean, repair or inspection is booked into it.</p>
+        </div>
+        <svg class="sched" viewBox="0 0 440 230" role="img" aria-label="Two guest stays with a free gap between them, and a task scheduled into the gap">
+          <line x1="28" y1="170" x2="412" y2="170" stroke="#3A4530" stroke-width="1.5"/>
+          <g font-family="DM Mono, monospace" font-size="11" fill="#8b9178">
+            <text x="60" y="192" text-anchor="middle">Mon</text><text x="140" y="192" text-anchor="middle">Tue</text><text x="220" y="192" text-anchor="middle">Wed</text><text x="300" y="192" text-anchor="middle">Thu</text><text x="380" y="192" text-anchor="middle">Fri</text>
+          </g>
+          <rect x="34" y="120" width="130" height="30" rx="6" fill="#F3F0E6" opacity="0.88"/><text x="52" y="140" font-family="DM Sans, sans-serif" font-size="13" fill="#20271A">Guest stay</text>
+          <rect x="266" y="120" width="140" height="30" rx="6" fill="#F3F0E6" opacity="0.88"/><text x="284" y="140" font-family="DM Sans, sans-serif" font-size="13" fill="#20271A">Guest stay</text>
+          <rect x="172" y="120" width="86" height="30" rx="6" fill="#C9A24B" opacity="0.16" stroke="#C9A24B" stroke-width="1.4" stroke-dasharray="4 4"/>
+          <line x1="215" y1="96" x2="215" y2="118" stroke="#C9A24B" stroke-width="1.4"/>
+          <rect x="170" y="68" width="90" height="30" rx="8" fill="#C9A24B"/><text x="215" y="88" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="13" font-weight="500" fill="#3D2E0E">+ Deep clean</text>
+        </svg>
+      </div>
+
+      <div class="ops-grid">
+        <div class="card reveal">
+          <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="#C9A24B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="12" width="8" height="24" rx="2"/><rect x="20" y="12" width="8" height="15" rx="2"/><rect x="31" y="12" width="8" height="20" rx="2"/></svg>
+          <h3>Operations board</h3>
+          <p>Every checkout, clean and check-in for the day — who's on it, what stage it's at, all on one screen.</p>
+        </div>
+        <div class="card reveal">
+          <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="#C9A24B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="18" width="32" height="14" rx="7"/><circle cx="31" cy="25" r="4.5" fill="#C9A24B" stroke="none"/></svg>
+          <h3>Checks</h3>
+          <p>The little things that aren't tasks — lights off, heating down for summer — handed to the cleaner, every time.</p>
+        </div>
+        <div class="card reveal">
+          <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="#C9A24B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="11" y="10" width="26" height="30" rx="3"/><rect x="18" y="7" width="12" height="6" rx="2"/><path d="M18,26 l4,4 l8,-9"/></svg>
+          <h3>Inspections</h3>
+          <p>Trigger them your way — manually, or automatically every few turnovers. The system remembers, so you don't.</p>
+        </div>
+        <div class="card reveal">
+          <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="#C9A24B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24,10 l3,8 l8,3 l-8,3 l-3,8 l-3,-8 l-8,-3 l8,-3 z"/><circle cx="36" cy="13" r="1.5" fill="#C9A24B" stroke="none"/><circle cx="13" cy="35" r="1.5" fill="#C9A24B" stroke="none"/></svg>
+          <h3>Deep cleans</h3>
+          <p>Build a template per property or unit type. Apply it, and the team follows, ticks and leaves notes.</p>
+        </div>
+        <div class="card reveal">
+          <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="#C9A24B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="22" width="13" height="13" rx="1.5"/><rect x="26" y="22" width="13" height="13" rx="1.5"/><rect x="17.5" y="9" width="13" height="13" rx="1.5"/></svg>
+          <h3>Inventory</h3>
+          <p>Every fork in every unit, counted — flagged by the cleaner before a guest notices at midnight.</p>
+        </div>
+        <div class="card reveal">
+          <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="#C9A24B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="10" y="10" width="28" height="30" rx="3"/><line x1="16" y1="18" x2="32" y2="18"/><line x1="16" y1="25" x2="32" y2="25"/><line x1="16" y1="32" x2="26" y2="32"/></svg>
           <h3>The record</h3>
-          <p>Every turnover, repair, inspection and change logged the moment it happens — who, what, when, what it cost. Nothing left to memory.</p>
-        </div>
-        <div class="facet">
-          <span class="fk">/ remembered</span>
-          <h3>The memory</h3>
-          <p>Ask what broke, when it was last serviced, what's still under warranty — and get an answer in seconds, long after the people who knew have moved on.</p>
+          <p>Every action above is logged automatically — the permanent history that makes the building remember.</p>
         </div>
       </div>
-      <p class="pms-note">Works alongside the PMS you already run — Guesty, Hostaway, your channels.</p>
+    </div>
+  </section>
+
+  <!-- PORTALS -->
+  <section class="portals">
+    <div class="wrap">
+      <div class="center sec-head reveal">
+        <span class="eyebrow">Built for the team</span>
+        <h2>A view for every role.</h2>
+        <p class="lead">Everyone sees exactly what they need — and nothing they don't.</p>
+      </div>
+      <div class="grid3">
+        <div class="card reveal">
+          <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="#A07E2F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13,30 a11,11 0 0 1 22,0"/><line x1="9" y1="30" x2="39" y2="30"/><line x1="20" y1="36" x2="28" y2="36"/><line x1="24" y1="16" x2="24" y2="19"/><circle cx="24" cy="14" r="1.6" fill="#A07E2F" stroke="none"/></svg>
+          <h3>Reception</h3>
+          <p>Manage early and late check-in-out, log walk-ins, and assign tasks on the fly as the day unfolds.</p>
+        </div>
+        <div class="card reveal">
+          <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="#A07E2F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="11" y="9" width="26" height="32" rx="3"/><path d="M16,18 l2,2 l3.5,-3.5"/><line x1="25" y1="18.5" x2="32" y2="18.5"/><path d="M16,28 l2,2 l3.5,-3.5"/><line x1="25" y1="28.5" x2="32" y2="28.5"/></svg>
+          <h3>Cleaner</h3>
+          <p>Just the day's units and a checklist to follow — step by step, with checks and notes, nothing missed.</p>
+        </div>
+        <div class="card reveal">
+          <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="#A07E2F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="24" cy="24" r="15"/><path d="M24,15 v9 l6,4"/></svg>
+          <h3>Owner &amp; admin</h3>
+          <p>The full picture — every log, cost and change across the portfolio, searchable whenever you need it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPOUNDS -->
+  <section class="dark comp">
+    <div class="wrap">
+      <div class="center reveal">
+        <span class="eyebrow">Why it compounds</span>
+        <h2>Worth more every year you run it.</h2>
+        <p>The longer a building runs on AX, the more it remembers — until running without it is unthinkable.</p>
+      </div>
+      <svg class="chart reveal" viewBox="0 0 420 200" role="img" aria-label="The recorded value of a building grows every year it runs on AX">
+        <line x1="40" y1="166" x2="392" y2="166" stroke="#3A4530" stroke-width="1.5"/>
+        <rect x="48"  y="132" width="34" height="34"  rx="4" fill="#C9A24B" opacity=".34"/><rect x="96" y="116" width="34" height="50" rx="4" fill="#C9A24B" opacity=".44"/><rect x="144" y="96" width="34" height="70" rx="4" fill="#C9A24B" opacity=".56"/><rect x="192" y="74" width="34" height="92" rx="4" fill="#C9A24B" opacity=".68"/><rect x="240" y="54" width="34" height="112" rx="4" fill="#C9A24B" opacity=".8"/><rect x="288" y="36" width="34" height="130" rx="4" fill="#C9A24B" opacity=".9"/><rect x="336" y="20" width="34" height="146" rx="4" fill="#C9A24B"/>
+        <text x="65"  y="186" text-anchor="middle" font-family="DM Mono, monospace" font-size="11" fill="#8b9178">'20</text><text x="161" y="186" text-anchor="middle" font-family="DM Mono, monospace" font-size="11" fill="#8b9178">'22</text><text x="257" y="186" text-anchor="middle" font-family="DM Mono, monospace" font-size="11" fill="#8b9178">'24</text><text x="353" y="186" text-anchor="middle" font-family="DM Mono, monospace" font-size="11" fill="#8b9178">'26</text>
+      </svg>
     </div>
   </section>
 
   <!-- PROOF -->
   <section class="proof" id="proof">
-    <div class="wrap center">
+    <div class="wrap center reveal">
       <span class="eyebrow">Proven in production</span>
-      <h2>Built and run on a real portfolio — not a demo.</h2>
-      <p class="lead">AirXperience runs every day on Espace Properties, a live portfolio in Montréal — short-term, long-term and commercial, under one roof. It has to earn its keep there before it's offered to anyone else.</p>
+      <h2>Built and run on a real portfolio.</h2>
+      <p class="lead">AX runs every day on Espace Properties, a live portfolio in Montréal — short-term, long-term and commercial, under one roof. It earns its keep there before it's offered to anyone else.</p>
       <div class="stats">
         <div class="stat"><div class="num">5</div><div class="sl">buildings</div></div>
         <div class="stat"><div class="num">52<span>+</span></div><div class="sl">units mapped</div></div>
@@ -265,8 +414,8 @@
   </section>
 
   <!-- CTA -->
-  <section class="cta" id="early">
-    <div class="wrap">
+  <section class="dark cta" id="early">
+    <div class="wrap reveal">
       <h2>Start your building's memory.</h2>
       <p class="lead">We're onboarding a small group of operators. Tell us about your portfolio and we'll be in touch personally.</p>
       <a href="https://tally.so/r/pb5ARE" target="_blank" rel="noopener" class="btn btn-primary">Get early access</a>
@@ -281,10 +430,8 @@
     <div>
       <a class="brand" href="#top" aria-label="AirXperience home">
         <svg viewBox="76 116 360 280" aria-hidden="true"><g fill="none" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M96,376 L169,136 L241,376" stroke="#2F3A23" stroke-width="30"/>
-          <path d="M125,281 L212,281" stroke="#2F3A23" stroke-width="30"/>
-          <path d="M285,136 L416,376" stroke="#2F3A23" stroke-width="30"/>
-          <path d="M416,136 L285,376" stroke="#2F3A23" stroke-width="30"/>
+          <path d="M96,376 L169,136 L241,376" stroke="#2F3A23" stroke-width="30"/><path d="M125,281 L212,281" stroke="#2F3A23" stroke-width="30"/>
+          <path d="M285,136 L416,376" stroke="#2F3A23" stroke-width="30"/><path d="M416,136 L285,376" stroke="#2F3A23" stroke-width="30"/>
           <path d="M205,274 Q285,361 350,252" stroke="#C9A24B" stroke-width="22"/></g></svg>
         AirXperience
       </a>
@@ -293,6 +440,17 @@
     <div class="fr">© 2026 AirXperience · Montréal<br><a href="mailto:info@airxperience.app">info@airxperience.app</a></div>
   </div>
 </footer>
+
+<script>
+  (function(){
+    var els = document.querySelectorAll('.reveal');
+    if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+    },{threshold:.1, rootMargin:'0px 0px -8% 0px'});
+    els.forEach(function(e){io.observe(e)});
+  })();
+</script>
 
 </body>
 </html>

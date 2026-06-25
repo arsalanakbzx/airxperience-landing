@@ -212,6 +212,43 @@
   .foot .fr a{color:var(--brass-deep)}
   .foot .fr a:hover{color:var(--ink)}
 
+  /* try it / interactive demo */
+  .try{overflow:hidden}
+  .try::before{content:"";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:760px;height:760px;border-radius:50%;background:radial-gradient(circle,rgba(201,162,75,.10),transparent 64%);pointer-events:none}
+  .try .wrap{position:relative}
+  .try .sec-head{margin-bottom:40px}
+  .try-lead{color:#cdcdbd;max-width:46ch;margin-left:auto;margin-right:auto}
+  .demo-frame{display:block;width:100%;max-width:920px;margin:0 auto;cursor:pointer;border:0;padding:0;background:none;
+    border-radius:20px;position:relative;overflow:hidden;
+    box-shadow:0 40px 90px -40px rgba(0,0,0,.7), inset 0 0 0 1px rgba(201,162,75,.22);
+    transition:transform .25s var(--ease),box-shadow .25s}
+  .demo-frame:hover{transform:translateY(-4px);box-shadow:0 54px 110px -42px rgba(0,0,0,.8), inset 0 0 0 1px rgba(201,162,75,.45)}
+  .demo-poster{display:block;width:100%;height:auto;background:radial-gradient(120% 90% at 50% 6%,#1b2336,#0b0d10 72%)}
+  .demo-cta{position:absolute;left:50%;bottom:24px;transform:translateX(-50%);display:flex;align-items:center;gap:11px;
+    background:rgba(11,13,16,.62);backdrop-filter:blur(8px);border:1px solid rgba(201,162,75,.4);border-radius:999px;
+    padding:12px 22px;font-family:var(--mono);font-size:13px;letter-spacing:.06em;color:var(--cream);transition:background .2s,border-color .2s}
+  .demo-frame:hover .demo-cta{background:rgba(201,162,75,.16);border-color:var(--brass)}
+  .demo-cta .play{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;
+    background:linear-gradient(180deg,var(--brass-lo),#bf963c);color:#33270B}
+  .demo-cta .play svg{width:11px;height:11px;margin-left:1px}
+  .try-note{text-align:center;font-family:var(--mono);font-size:13px;color:#8b9178;margin-top:26px}
+
+  /* fullscreen demo modal */
+  .demo-modal{position:fixed;inset:0;z-index:100;background:#0b0d10;display:flex;flex-direction:column;
+    opacity:0;visibility:hidden;transition:opacity .35s var(--ease),visibility .35s}
+  .demo-modal.open{opacity:1;visibility:visible}
+  .demo-bar{flex:none;display:flex;align-items:center;justify-content:space-between;gap:16px;height:54px;padding:0 18px;
+    background:linear-gradient(180deg,rgba(8,10,14,.95),rgba(8,10,14,.78));border-bottom:1px solid rgba(243,237,225,.10)}
+  .demo-bar .dt{display:flex;align-items:center;gap:10px;font-family:"DM Mono",monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#cfc9bb}
+  .demo-bar .dt b{width:8px;height:8px;border-radius:50%;background:var(--brass);box-shadow:0 0 10px var(--brass)}
+  .demo-close{display:inline-flex;align-items:center;gap:8px;background:transparent;color:#f3ede1;border:1px solid rgba(243,237,225,.2);
+    border-radius:99px;padding:8px 16px;font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:border-color .2s,background .2s}
+  .demo-close:hover{border-color:var(--brass);background:rgba(201,162,75,.12);color:var(--brass)}
+  .demo-stage{flex:1;position:relative;background:#0b0d10}
+  .demo-stage iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+  .demo-loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:"DM Mono",monospace;
+    font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#6b7280}
+
   @media (max-width:860px){
     .hero-grid,.prob-grid,.guide-grid{grid-template-columns:1fr;gap:38px}
     .hero{padding:48px 0 24px}
@@ -222,6 +259,7 @@
     .stats{gap:34px}
     .foot{flex-direction:column}
     .foot .fr{text-align:left}
+    .demo-bar .dt span{display:none}
   }
 </style>
 </head>
@@ -238,6 +276,7 @@
       AirXperience
     </a>
     <div class="nav-right">
+      <a class="lk" href="#try">Try it</a>
       <a class="lk" href="#plan">The plan</a>
       <a class="lk" href="#proof">Proof</a>
       <a href="https://tally.so/r/pb5ARE" target="_blank" rel="noopener" class="btn btn-primary">Get early access</a>
@@ -425,6 +464,95 @@
     </div>
   </section>
 
+  <!-- TRY IT / INTERACTIVE DEMO -->
+  <section class="dark try" id="try">
+    <div class="wrap">
+      <div class="center sec-head reveal">
+        <span class="eyebrow">See it in motion</span>
+        <h2>Don't take our word for it. Walk the building.</h2>
+        <p class="lead try-lead">An interactive walkthrough of a real building inside the system — roof gutter to back-lot permit, unit to asset to care plan. Scroll through it, open the assets, act on a whole group at once. Real data, live from the portfolio.</p>
+      </div>
+
+      <button class="demo-frame reveal" id="launchDemo" aria-label="Launch the interactive walkthrough">
+        <svg class="demo-poster" viewBox="0 0 920 480" role="img" aria-label="Preview of the interactive building walkthrough">
+          <!-- narrator rail -->
+          <rect x="0" y="0" width="156" height="480" fill="#0a0c10" opacity=".55"/>
+          <circle cx="30" cy="36" r="11" fill="#C9A24B"/><text x="46" y="41" font-family="Syne,sans-serif" font-weight="700" font-size="15" fill="#f3ede1">AirXperience</text>
+          <g font-family="DM Mono,monospace" font-size="11" fill="#959cab">
+            <circle cx="26" cy="92" r="3" fill="#3a4452"/><text x="40" y="96">Dashboard</text>
+            <circle cx="26" cy="120" r="3" fill="#3a4452"/><text x="40" y="124">Properties</text>
+            <rect x="14" y="140" width="128" height="26" rx="7" fill="rgba(201,162,75,.12)"/>
+            <rect x="14" y="142" width="3" height="22" rx="2" fill="#C9A24B"/>
+            <circle cx="26" cy="153" r="3" fill="#C9A24B"/><text x="40" y="157" fill="#f3ede1">Checks</text>
+            <circle cx="26" cy="185" r="3" fill="#3a4452"/><text x="40" y="189">Assets &amp; care</text>
+            <circle cx="26" cy="213" r="3" fill="#3a4452"/><text x="40" y="217">Operations</text>
+            <circle cx="26" cy="241" r="3" fill="#3a4452"/><text x="40" y="245">Tenants</text>
+          </g>
+
+          <!-- eyebrow + headline -->
+          <text x="196" y="70" font-family="DM Mono,monospace" font-size="11" letter-spacing="3" fill="#C9A24B">03 / 07 · BUILDING CHECKS</text>
+          <text x="194" y="112" font-family="Syne,sans-serif" font-weight="700" font-size="34" fill="#f3ede1">The roof. The back lot.</text>
+          <text x="194" y="150" font-family="Syne,sans-serif" font-weight="700" font-size="34" fill="#C9A24B">On the clock.</text>
+
+          <!-- building -->
+          <g transform="translate(430,150)">
+            <rect x="-3" y="-18" width="176" height="8" rx="3" fill="#2a323f"/>
+            <rect x="166" y="-18" width="5" height="232" fill="#222a36"/>
+            <rect x="0" y="-10" width="170" height="32" rx="4" fill="#1c2330"/>
+            <text x="85" y="11" text-anchor="middle" font-family="DM Mono,monospace" font-size="10" letter-spacing="3" fill="#C9A24B">ATATEKEN</text>
+            <!-- LT -->
+            <g transform="translate(14,34)">
+              <rect x="0" y="0" width="32" height="22" rx="3" fill="#0e1f18" stroke="rgba(70,211,154,.5)"/><rect x="42" y="0" width="32" height="22" rx="3" fill="#0e1f18" stroke="rgba(70,211,154,.5)"/><rect x="84" y="0" width="32" height="22" rx="3" fill="#0e1f18" stroke="rgba(70,211,154,.5)"/><rect x="126" y="0" width="32" height="22" rx="3" fill="#0e1f18" stroke="rgba(70,211,154,.5)"/>
+              <text x="158" y="-4" text-anchor="end" font-family="DM Mono,monospace" font-size="8" fill="#46d39a">LT · 1433</text>
+            </g>
+            <!-- ST -->
+            <g transform="translate(14,82)">
+              <rect x="0" y="0" width="32" height="22" rx="3" fill="#0e1726" stroke="rgba(94,157,255,.55)"/><rect x="42" y="0" width="32" height="22" rx="3" fill="#0e1726" stroke="rgba(94,157,255,.55)"/><rect x="84" y="0" width="32" height="22" rx="3" fill="#0e1726" stroke="rgba(94,157,255,.55)"/><rect x="126" y="0" width="32" height="22" rx="3" fill="#0e1726" stroke="rgba(94,157,255,.55)"/>
+              <text x="158" y="-4" text-anchor="end" font-family="DM Mono,monospace" font-size="8" fill="#5e9dff">ST · 1431</text>
+              <circle cx="58" cy="11" r="4" fill="#C9A24B"/><circle cx="100" cy="11" r="4" fill="#C9A24B"/>
+            </g>
+            <!-- commercial -->
+            <g transform="translate(14,128)">
+              <rect x="0" y="0" width="36" height="30" rx="3" fill="#1a1206" stroke="rgba(240,166,78,.5)"/><rect x="42" y="0" width="36" height="30" rx="3" fill="#1a1206" stroke="rgba(240,166,78,.5)"/><rect x="84" y="0" width="36" height="30" rx="3" fill="#1a1206" stroke="rgba(240,166,78,.5)"/><rect x="126" y="0" width="32" height="30" rx="3" fill="#1a1206" stroke="rgba(240,166,78,.5)"/>
+              <text x="158" y="-4" text-anchor="end" font-family="DM Mono,monospace" font-size="8" fill="#f0a64e">CT · C01–C04</text>
+            </g>
+            <!-- roof gutter pin -->
+            <circle cx="40" cy="-14" r="5" fill="#C9A24B"/><circle cx="40" cy="-14" r="9" fill="none" stroke="rgba(201,162,75,.5)"/>
+            <rect x="52" y="-26" width="118" height="22" rx="6" fill="rgba(10,13,18,.92)" stroke="rgba(243,237,225,.16)"/>
+            <text x="61" y="-11" font-family="DM Mono,monospace" font-size="9" fill="#f3ede1">Gutter · every 60d</text>
+            <!-- back lot bins + permit -->
+            <g transform="translate(178,180)">
+              <rect x="0" y="0" width="16" height="22" rx="2" fill="#1b1206" stroke="rgba(240,166,78,.5)"/><rect x="20" y="0" width="16" height="22" rx="2" fill="#1b1206" stroke="rgba(240,166,78,.5)"/>
+              <circle cx="18" cy="-10" r="5" fill="#C9A24B"/>
+              <rect x="30" y="-22" width="124" height="22" rx="6" fill="rgba(10,13,18,.92)" stroke="rgba(243,237,225,.16)"/>
+              <text x="39" y="-7" font-family="DM Mono,monospace" font-size="9" fill="#f3ede1">Garbage sticker · 340d</text>
+            </g>
+          </g>
+
+          <!-- data card hint -->
+          <g transform="translate(648,196)">
+            <rect x="0" y="0" width="220" height="190" rx="14" fill="rgba(15,19,25,.82)" stroke="rgba(243,237,225,.14)"/>
+            <text x="18" y="28" font-family="DM Mono,monospace" font-size="9" letter-spacing="2" fill="#959cab">ATATEKEN · BUILDING</text>
+            <rect x="18" y="44" width="184" height="1" fill="rgba(243,237,225,.1)"/>
+            <text x="18" y="68" font-family="Syne,sans-serif" font-weight="600" font-size="14" fill="#f3ede1">Gutter check</text>
+            <rect x="18" y="78" width="184" height="5" rx="3" fill="rgba(243,237,225,.08)"/><rect x="18" y="78" width="114" height="5" rx="3" fill="#46d39a"/>
+            <text x="18" y="100" font-family="DM Mono,monospace" font-size="9" fill="#46d39a">due in 23 days</text>
+            <text x="18" y="130" font-family="Syne,sans-serif" font-weight="600" font-size="14" fill="#f3ede1">Garbage sticker</text>
+            <rect x="18" y="140" width="184" height="5" rx="3" fill="rgba(243,237,225,.08)"/><rect x="18" y="140" width="162" height="5" rx="3" fill="#f0a64e"/>
+            <text x="18" y="162" font-family="DM Mono,monospace" font-size="9" fill="#f0a64e">City of Montréal · due in 41 days</text>
+          </g>
+        </svg>
+
+        <span class="demo-cta">
+          <span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+          Try it yourself
+        </span>
+      </button>
+
+      <p class="try-note">Opens an interactive walkthrough · best on desktop, works on mobile</p>
+    </div>
+  </section>
+
   <!-- CTA -->
   <section class="dark cta" id="early">
     <div class="wrap reveal">
@@ -437,6 +565,18 @@
   </section>
 
 </main>
+
+<!-- FULLSCREEN INTERACTIVE DEMO -->
+<div class="demo-modal" id="demoModal" aria-hidden="true" role="dialog" aria-label="AirXperience interactive walkthrough">
+  <div class="demo-bar">
+    <span class="dt"><b></b>AirXperience<span> — interactive walkthrough</span></span>
+    <button class="demo-close" id="demoClose" aria-label="Close walkthrough">✕ Close</button>
+  </div>
+  <div class="demo-stage">
+    <div class="demo-loading" id="demoLoading">Loading walkthrough…</div>
+    <iframe id="demoFrame" title="AirXperience interactive walkthrough" loading="lazy"></iframe>
+  </div>
+</div>
 
 <footer>
   <div class="wrap foot">
@@ -493,6 +633,36 @@
   })();
 
   window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+
+  // interactive walkthrough modal
+  (function(){
+    var SRC='airxperience-story-ax5.html';
+    var modal=document.getElementById('demoModal'),
+        frame=document.getElementById('demoFrame'),
+        loading=document.getElementById('demoLoading'),
+        launch=document.getElementById('launchDemo'),
+        close=document.getElementById('demoClose');
+    if(!modal) return;
+    frame.addEventListener('load', function(){ if(frame.src) loading.style.display='none'; });
+    function open(){
+      loading.style.display='flex';
+      frame.src=SRC;                 // (re)load fresh each open
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden','false');
+      document.body.style.overflow='hidden';
+    }
+    function shut(){
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden','true');
+      document.body.style.overflow='';
+      setTimeout(function(){ frame.src='about:blank'; }, 350);
+    }
+    launch.addEventListener('click', open);
+    close.addEventListener('click', shut);
+    document.addEventListener('keydown', function(e){
+      if(e.key==='Escape' && modal.classList.contains('open')) shut();
+    });
+  })();
 </script>
 <script defer src="/_vercel/insights/script.js"></script>
 
